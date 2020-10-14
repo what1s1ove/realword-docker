@@ -34,7 +34,7 @@ const startServer = () => {
         console.log(err)
       }
 
-      console.log(`Saved post`, savedPost)
+      console.log(`Saved post with volumes`, savedPost)
     })
   })
 }
