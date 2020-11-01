@@ -5,8 +5,8 @@ services:
     build: ./frontend
     container_name: realworld-docker-frontend
     command: serve -s build -l 3000
-    ports: 
-      - "3000:3000"
+    # ports: 
+      # - "3000:3000" - comments because of nginx
     restart: unless-stopped
 
   api: 
