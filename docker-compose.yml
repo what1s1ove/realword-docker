@@ -56,7 +56,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
-    depends_on: 
+    depends_on:
       - frontend
   
 volumes: 
