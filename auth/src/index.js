@@ -16,6 +16,13 @@ app.get(`/test`, (_, res) => {
   res.send(`Our auth server is working correctly`)
 })
 
+app.get(`/api/currentUser`, (_, res) => {
+  res.json({
+    id: `1234`,
+    email: `foo@gmail.com`
+  })
+})
+
 connedDb()
   .on(`error`, console.log)
   .on(`disconnect`, connedDb)
