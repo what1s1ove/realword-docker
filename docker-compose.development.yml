@@ -1,23 +1,23 @@
 version: '3'
 
-services: 
+services:
   frontend:
     command: npm run start
     stdin_open: true
     tty: true
-    volumes: 
+    volumes:
       - ./frontend/src:/usr/src/app/src
 
   api:
     command: npm run dev
-    volumes: 
+    volumes:
       - ./api/src:/usr/src/app/src
 
   auth:
     command: npm run dev
-    volumes: 
+    volumes:
       - ./auth/src:/usr/src/app/src
- 
+
   nginx:
     volumes:
       - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf

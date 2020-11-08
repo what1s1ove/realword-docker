@@ -1,64 +1,58 @@
 version: '3'
 
-services: 
+services:
   frontend:
     build: ./frontend
     container_name: realworld-docker-frontend
     command: serve -s build -l 3000
-    # ports: 
-      # - "3000:3000" - comments because of nginx
     restart: unless-stopped
-    networks: 
-      - realword-docker-network
+    networks:
+      - realworld-docker-network
 
-  api: 
+  api:
     build: ./api
-    command: npm run start
     container_name: realworld-docker-api
+    command: npm run start
     restart: unless-stopped
-    # ports: - comments because of nginx
-    #   - "3001:3001"
-    environment: 
+    environment:
       - PORT=3001
       - MONGO_URL=mongodb://api_db:27017/api
       - AUTH_API_URL=http://auth:3002/api
-    depends_on: 
+    depends_on:
       - api_db
-    networks: 
-      - realword-docker-network
+    networks:
+      - realworld-docker-network
 
   auth:
     build: ./auth
     container_name: realworld-docker-auth
     command: npm run start
     restart: unless-stopped
-    # ports: - comments because of nginx
-    #   - "3002:3002"
-    environment: 
+    environment:
       - PORT=3002
       - MONGO_URL=mongodb://auth_db:27017/auth
       - API_URL=http://api:3001/api
-    depends_on: 
+    depends_on:
       - auth_db
-    networks: 
-      - realword-docker-network
+    networks:
+      - realworld-docker-network
 
   api_db:
     image: mongo:latest
     container_name: realworld-docker-api-db
-    volumes: 
+    volumes:
       - mongodb_api:/data/db
-    networks: 
-      - realword-docker-network
-  
+    networks:
+      - realworld-docker-network
+
   auth_db:
     image: mongo:latest
     container_name: realworld-docker-auth-db
-    volumes: 
+    volumes:
       - mongodb_auth:/data/db
-    networks: 
-      - realword-docker-network
-  
+    networks:
+      - realworld-docker-network
+
   nginx:
     image: nginx:stable-alpine
     container_name: realworld-docker-nginx
@@ -70,13 +64,13 @@ services:
       - frontend
       - api
       - auth
-    networks: 
-      - realword-docker-network
-  
-volumes: 
+    networks:
+      - realworld-docker-network
+
+volumes:
   mongodb_api:
   mongodb_auth:
 
 networks:
-  realword-docker-network:
+  realworld-docker-network:
     driver: bridge
