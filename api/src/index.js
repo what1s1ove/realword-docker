@@ -50,7 +50,7 @@ app.get(`/api/testapidata`, (_, res) => {
   })
 })
 
-app.get(`/testWithCurrentUser`, (_, res) => {
+app.get(`/testwithcurrentuser`, (_, res) => {
   axios.get(`${authApiUrl}/currentUser`).then(({ data }) => {
     res.json({
       testWithCurrentUser: true,
