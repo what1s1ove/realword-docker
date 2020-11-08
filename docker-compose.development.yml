@@ -13,7 +13,11 @@ services:
     volumes: 
       - ./api/src:/usr/src/app/src
 
-  api:
+  auth:
     command: npm run dev
     volumes: 
       - ./auth/src:/usr/src/app/src
+ 
+  nginx:
+    volumes:
+      - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf
