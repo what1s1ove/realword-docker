@@ -3,11 +3,11 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./frontend
       dockerfile: Dockerfile.prod
+      context: ./frontend
     container_name: realworld-docker-frontend
-    command: serve -s build -l 3000
     restart: unless-stopped
+    command: serve -s build -l 3000
     networks:
       - realworld-docker-network
 
