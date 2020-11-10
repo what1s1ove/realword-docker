@@ -16,7 +16,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload. Change from docker
-          with volumes We are in dev!
+          with volumes We are in dev! It is hot
         </p>
         <a
           className="App-link"
